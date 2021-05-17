@@ -1,10 +1,125 @@
 {
-  
-  
   "version": 2,
-  
-  "projects": {},
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/nest"
+  },
+  "defaultProject": "patients",
+  "projects": {
+    "patients": {
+      "root": "apps/patients",
+      "sourceRoot": "apps/patients/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/patients",
+            "main": "apps/patients/src/main.ts",
+            "tsConfig": "apps/patients/tsconfig.app.json",
+            "assets": [
+              "apps/patients/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/patients/src/environments/environment.ts",
+                  "with": "apps/patients/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "patients:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/patients/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/patients"
+          ],
+          "options": {
+            "jestConfig": "apps/patients/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "referrals": {
+      "root": "apps/referrals",
+      "sourceRoot": "apps/referrals/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/referrals",
+            "main": "apps/referrals/src/main.ts",
+            "tsConfig": "apps/referrals/tsconfig.app.json",
+            "assets": [
+              "apps/referrals/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/referrals/src/environments/environment.ts",
+                  "with": "apps/referrals/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "referrals:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/referrals/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/referrals"
+          ],
+          "options": {
+            "jestConfig": "apps/referrals/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
   }
 }

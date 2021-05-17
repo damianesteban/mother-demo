@@ -1,6 +1,16 @@
 
-
 # MotherDemo
+
+## To Do 05.16.2021
+
+**NOTE:** Use [this](https://github.com/tyankatsu0105/sandbox-apollo-server-and-react) as a template!
+
+- [ ] Add same codegen setup to referrals service
+- [ ] Add Federated Gateway
+- [ ] Add basic client with codegen
+- [ ] Perform one simple query
+
+---
 
 This project was generated using [Nx](https://nx.dev).
 

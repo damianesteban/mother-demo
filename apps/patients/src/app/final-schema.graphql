@@ -1,0 +1,23 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Mutation {
+  addPatient(firstName: String!, lastName: String!, email: String!): Patient
+}
+
+interface Node {
+  id: ID!
+}
+
+type Patient implements Node {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+}
+
+type Query {
+  allPatients: [Patient]
+}
