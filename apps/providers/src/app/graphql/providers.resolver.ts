@@ -2,16 +2,16 @@
 
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 
-export interface PatientEntity {
+export interface ProviderEntity {
   id: string | number;
   firstName: string;
   lastName: string;
   email: string;
 }
 
-@Resolver('Patient')
-export class PatientResolver {
-  private sets: PatientEntity[] = [
+@Resolver('Provider')
+export class ProviderResolver {
+  private sets: ProviderEntity[] = [
     {
       id: 1,
       firstName: 'Bob',
@@ -26,13 +26,13 @@ export class PatientResolver {
     },
   ];
 
-  @Query('allPatients')
-  getAllSets(): PatientEntity[] {
+  @Query('allProviders')
+  getAllSets(): ProviderEntity[] {
     return this.sets;
   }
 
-  @Mutation('addPatient')
-  addPatient(
+  @Mutation('addProvider')
+  addProvider(
     @Args('firstName') firstName: string,
     @Args('lastName') lastName: string,
     @Args('email') email: string

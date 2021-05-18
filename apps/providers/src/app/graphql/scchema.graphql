@@ -1,0 +1,18 @@
+interface Node {
+  id: ID!
+}
+
+type Provider implements Node {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    email: String!
+}
+
+type Query {
+    allProviders: [Provider]
+}
+
+type Mutation {
+    addProvider(firstName: String!, lastName: String!, email: String!): Provider
+}

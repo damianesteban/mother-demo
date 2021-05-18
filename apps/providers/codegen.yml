@@ -1,0 +1,32 @@
+schema: apps/providers/**/*.graphql
+generates:
+  apps/providers/src/app/final-schema.graphql:
+    plugins:
+      - schema-ast:
+          includeDirectives: true
+          commentDescriptions: true
+  apps/providers/src/app/generated.ts:
+    plugins:
+      - typescript
+      - typescript-resolvers
+    config:
+      useIndexSignature: true
+
+  # apps/mock-server/src/app/types/gen/api.ts:
+  #   plugins:
+  #     - typescript
+  #     - typescript-operations
+  #     - typescript-resolvers
+  #   config:
+  #     # If you are using Apollo Server with TypeScript, note that you need to set useIndexSignature: true in your config, in order to add a compatible index signature (more info).
+  #     # https://www.graphql-code-generator.com/docs/plugins/typescript-resolvers#integration-with-apollo-server
+  #     useIndexSignature: true
+  #     # __typenameをoptionalにしない
+  #     # nonOptionalTypename: true
+  #     optionalResolveType: true
+
+config:
+  enumsAsConst: true
+  scalars:
+    DateTime: string
+    Date: string
