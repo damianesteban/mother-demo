@@ -24,6 +24,9 @@
     },
     "referrals": {
       "tags": []
+    },
+    "schema": {
+      "tags": []
     }
   }
 }

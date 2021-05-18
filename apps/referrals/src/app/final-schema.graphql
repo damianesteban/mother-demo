@@ -1,0 +1,21 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Mutation {
+  addReferral(name: String!): Referral
+}
+
+interface Node {
+  id: ID!
+}
+
+type Query {
+  allReferrals: [Referral]
+}
+
+type Referral implements Node {
+  id: ID!
+  name: String!
+}

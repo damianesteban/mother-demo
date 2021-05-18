@@ -24,7 +24,7 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "codegen": "graphql-codegen -c apps/patients/codegen.yml"
+    "codegen": "graphql-codegen -c apps/patients/codegen.yml && graphql-codegen -c apps/referrals/codegen.yml"
   },
   "private": true,
   "dependencies": {

@@ -15,31 +15,27 @@ export type Scalars = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  addPatient?: Maybe<Patient>;
+  addReferral?: Maybe<Referral>;
 };
 
 
-export type MutationAddPatientArgs = {
-  email: Scalars['String'];
-  firstName: Scalars['String'];
-  lastName: Scalars['String'];
+export type MutationAddReferralArgs = {
+  name: Scalars['String'];
 };
 
 export type Node = {
   id: Scalars['ID'];
 };
 
-export type Patient = Node & {
-  __typename?: 'Patient';
-  email: Scalars['String'];
-  firstName: Scalars['String'];
-  id: Scalars['ID'];
-  lastName: Scalars['String'];
-};
-
 export type Query = {
   __typename?: 'Query';
-  allPatients?: Maybe<Array<Maybe<Patient>>>;
+  allReferrals?: Maybe<Array<Maybe<Referral>>>;
+};
+
+export type Referral = Node & {
+  __typename?: 'Referral';
+  id: Scalars['ID'];
+  name: Scalars['String'];
 };
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
@@ -123,10 +119,10 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = ResolversObject<{
   Mutation: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
-  Node: ResolversTypes['Patient'];
+  Node: ResolversTypes['Referral'];
   ID: ResolverTypeWrapper<Scalars['ID']>;
-  Patient: ResolverTypeWrapper<Patient>;
   Query: ResolverTypeWrapper<{}>;
+  Referral: ResolverTypeWrapper<Referral>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 }>;
 
@@ -134,39 +130,37 @@ export type ResolversTypes = ResolversObject<{
 export type ResolversParentTypes = ResolversObject<{
   Mutation: {};
   String: Scalars['String'];
-  Node: ResolversParentTypes['Patient'];
+  Node: ResolversParentTypes['Referral'];
   ID: Scalars['ID'];
-  Patient: Patient;
   Query: {};
+  Referral: Referral;
   Boolean: Scalars['Boolean'];
 }>;
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
-  addPatient?: Resolver<Maybe<ResolversTypes['Patient']>, ParentType, ContextType, RequireFields<MutationAddPatientArgs, 'email' | 'firstName' | 'lastName'>>;
+  addReferral?: Resolver<Maybe<ResolversTypes['Referral']>, ParentType, ContextType, RequireFields<MutationAddReferralArgs, 'name'>>;
 }>;
 
 export type NodeResolvers<ContextType = any, ParentType extends ResolversParentTypes['Node'] = ResolversParentTypes['Node']> = ResolversObject<{
-  __resolveType: TypeResolveFn<'Patient', ParentType, ContextType>;
+  __resolveType: TypeResolveFn<'Referral', ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-}>;
-
-export type PatientResolvers<ContextType = any, ParentType extends ResolversParentTypes['Patient'] = ResolversParentTypes['Patient']> = ResolversObject<{
-  email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  firstName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  lastName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
-  allPatients?: Resolver<Maybe<Array<Maybe<ResolversTypes['Patient']>>>, ParentType, ContextType>;
+  allReferrals?: Resolver<Maybe<Array<Maybe<ResolversTypes['Referral']>>>, ParentType, ContextType>;
+}>;
+
+export type ReferralResolvers<ContextType = any, ParentType extends ResolversParentTypes['Referral'] = ResolversParentTypes['Referral']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
 export type Resolvers<ContextType = any> = ResolversObject<{
   Mutation?: MutationResolvers<ContextType>;
   Node?: NodeResolvers<ContextType>;
-  Patient?: PatientResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  Referral?: ReferralResolvers<ContextType>;
 }>;
 
 

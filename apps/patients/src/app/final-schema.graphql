@@ -4,7 +4,7 @@ schema {
 }
 
 type Mutation {
-  addPatient(firstName: String!, lastName: String!, email: String!): Patient
+  addPatient(email: String!, firstName: String!, lastName: String!): Patient
 }
 
 interface Node {
@@ -12,10 +12,10 @@ interface Node {
 }
 
 type Patient implements Node {
-  id: ID!
-  firstName: String!
-  lastName: String!
   email: String!
+  firstName: String!
+  id: ID!
+  lastName: String!
 }
 
 type Query {
