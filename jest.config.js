@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/apps/referrals',
     '<rootDir>/libs/schema',
     '<rootDir>/apps/providers',
+    '<rootDir>/apps/federated-gateway',
   ],
 };

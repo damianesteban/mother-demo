@@ -1,0 +1,13 @@
+subgraphs:
+  patients:
+    routing_url: http://localhost:3331/graphql
+    schema:
+      file: ./patients.graphql
+  providers:
+    routing_url: http://localhost:3332/graphql
+    schema:
+      file:  ./providers.graphql
+  referrals:
+    routing_url: http://localhost:3333/graphql
+    schema:
+      file: ./referrals.graphql

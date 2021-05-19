@@ -1,0 +1,18 @@
+interface Node {
+  id: ID!
+}
+
+type Patient implements Node {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    email: String!
+}
+
+type Query {
+    allPatients: [Patient]
+}
+
+type Mutation {
+    addPatient(firstName: String!, lastName: String!, email: String!): Patient
+}

@@ -1,0 +1,16 @@
+interface Node {
+  id: ID!
+}
+
+type Referral implements Node {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  allReferrals: [Referral]
+}
+
+type Mutation {
+  addReferral(name: String!): Referral
+}
