@@ -1,0 +1,60 @@
+schema
+  @core(feature: "https://specs.apollo.dev/core/v0.1"),
+  @core(feature: "https://specs.apollo.dev/join/v0.1")
+{
+  query: Query
+  mutation: Mutation
+}
+
+directive @core(feature: String!) repeatable on SCHEMA
+
+directive @join__field(graph: join__Graph, requires: join__FieldSet, provides: join__FieldSet) on FIELD_DEFINITION
+
+directive @join__type(graph: join__Graph!, key: join__FieldSet) repeatable on OBJECT | INTERFACE
+
+directive @join__owner(graph: join__Graph!) on OBJECT | INTERFACE
+
+directive @join__graph(name: String!, url: String!) on ENUM_VALUE
+
+scalar join__FieldSet
+
+enum join__Graph {
+  PATIENTS @join__graph(name: "patients" url: "http://localhost:3331/graphql")
+  PROVIDERS @join__graph(name: "providers" url: "http://localhost:3332/graphql")
+  REFERRALS @join__graph(name: "referrals" url: "http://localhost:3333/graphql")
+}
+
+type Mutation {
+  addPatient(firstName: String!, lastName: String!, email: String!): Patient @join__field(graph: PATIENTS)
+  addProvider(firstName: String!, lastName: String!, email: String!): Provider @join__field(graph: PROVIDERS)
+  addReferral(name: String!): Referral @join__field(graph: REFERRALS)
+}
+
+interface Node {
+  id: ID!
+}
+
+type Patient implements Node {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+}
+
+type Provider implements Node {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+}
+
+type Query {
+  allPatients: [Patient] @join__field(graph: PATIENTS)
+  allProviders: [Provider] @join__field(graph: PROVIDERS)
+  allReferrals: [Referral] @join__field(graph: REFERRALS)
+}
+
+type Referral implements Node {
+  id: ID!
+  name: String!
+}

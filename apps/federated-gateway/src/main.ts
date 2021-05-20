@@ -2,10 +2,13 @@ import { ApolloServer } from 'apollo-server';
 import { ApolloGateway } from '@apollo/gateway';
 import * as fs from 'fs';
 
-const supergraphSchema = fs.readFileSync('../supergraph-config.yaml').toString();
+
+const supergraphSchema = fs.readFileSync(__dirname + '/assets/schema.graphql').toString();
+console.log('GRAPH: ', supergraphSchema)
 
 const gateway = new ApolloGateway({
-  supergraphSdl: supergraphSchema
+  supergraphSdl: supergraphSchema,
+  __exposeQueryPlanExperimental: true
 });
 
 const server = new ApolloServer({
@@ -14,6 +17,6 @@ const server = new ApolloServer({
   subscriptions: false
 });
 
-server.listen().then(({ url }) => {
+server.listen({ port: 4000 }).then(({ url }) => {
   console.log(`🚀 Gateway ready at ${url}`);
 }).catch(err => {console.error(err)});

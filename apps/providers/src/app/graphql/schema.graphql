@@ -2,7 +2,7 @@ interface Node {
   id: ID!
 }
 
-type Provider implements Node {
+type Provider implements Node @key(fields: "id") {
     id: ID!
     firstName: String!
     lastName: String!

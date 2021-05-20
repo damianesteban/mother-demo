@@ -2,14 +2,14 @@ interface Node {
   id: ID!
 }
 
-type Patient implements Node {
+type Patient implements Node @key(fields: "id") {
     id: ID!
     firstName: String!
     lastName: String!
     email: String!
 }
 
-type Query {
+extend type Query {
     allPatients: [Patient]
 }
 
