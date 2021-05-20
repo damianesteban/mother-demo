@@ -19,7 +19,7 @@ extend type Provider @key(fields: "id") {
   referrals: [Referral]
 }
 
-type Query {
+extend type Query {
   allReferrals: [Referral]
 }
 

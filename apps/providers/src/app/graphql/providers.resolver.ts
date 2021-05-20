@@ -1,6 +1,6 @@
 // apps/api/src/app/set.resolver.ts
 
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver, ResolveReference } from '@nestjs/graphql';
 
 export interface ProviderEntity {
   id: string | number;
@@ -47,5 +47,10 @@ export class ProviderResolver {
     this.sets.push(newSet);
 
     return newSet;
+  }
+
+  @ResolveReference()
+  resolveReference(reference: { __typename: string, id: number }) {
+    return this.sets.find(i => i.id === reference.id)
   }
 }

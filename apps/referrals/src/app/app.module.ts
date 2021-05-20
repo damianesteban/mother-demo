@@ -1,7 +1,7 @@
 // apps/api/src/app/app.module.ts
 
 import { Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
+import { GraphQLFederationModule } from '@nestjs/graphql';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -9,7 +9,7 @@ import { ReferralResolver } from './graphql/referral.resolver';
 
 @Module({
   imports: [
-    GraphQLModule.forRoot({
+    GraphQLFederationModule.forRoot({
       typePaths: ['./**/*.graphql']
     })
   ],

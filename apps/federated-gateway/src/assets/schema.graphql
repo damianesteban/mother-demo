@@ -19,14 +19,14 @@ directive @join__graph(name: String!, url: String!) on ENUM_VALUE
 scalar join__FieldSet
 
 enum join__Graph {
-  PATIENTS @join__graph(name: "patients" url: "http://localhost:3331/graphql")
   PROVIDERS @join__graph(name: "providers" url: "http://localhost:3332/graphql")
+  PATIENTS @join__graph(name: "patients" url: "http://localhost:3331/graphql")
   REFERRALS @join__graph(name: "referrals" url: "http://localhost:3333/graphql")
 }
 
 type Mutation {
-  addPatient(firstName: String!, lastName: String!, email: String!): Patient @join__field(graph: PATIENTS)
   addProvider(firstName: String!, lastName: String!, email: String!): Provider @join__field(graph: PROVIDERS)
+  addPatient(firstName: String!, lastName: String!, email: String!): Patient @join__field(graph: PATIENTS)
   addReferral(name: String!): Referral @join__field(graph: REFERRALS)
 }
 
@@ -34,27 +34,43 @@ interface Node {
   id: ID!
 }
 
-type Patient implements Node {
-  id: ID!
-  firstName: String!
-  lastName: String!
-  email: String!
+type Patient implements Node
+  @join__owner(graph: PATIENTS)
+  @join__type(graph: PATIENTS, key: "id")
+  @join__type(graph: REFERRALS, key: "id")
+{
+  id: ID! @join__field(graph: PATIENTS)
+  firstName: String! @join__field(graph: PATIENTS)
+  lastName: String! @join__field(graph: PATIENTS)
+  email: String! @join__field(graph: PATIENTS)
+  referrals: [Referral] @join__field(graph: REFERRALS)
 }
 
-type Provider implements Node {
-  id: ID!
-  firstName: String!
-  lastName: String!
-  email: String!
+type Provider implements Node
+  @join__owner(graph: PROVIDERS)
+  @join__type(graph: PROVIDERS, key: "id")
+  @join__type(graph: REFERRALS, key: "id")
+{
+  id: ID! @join__field(graph: PROVIDERS)
+  firstName: String! @join__field(graph: PROVIDERS)
+  lastName: String! @join__field(graph: PROVIDERS)
+  email: String! @join__field(graph: PROVIDERS)
+  referrals: [Referral] @join__field(graph: REFERRALS)
 }
 
 type Query {
-  allPatients: [Patient] @join__field(graph: PATIENTS)
   allProviders: [Provider] @join__field(graph: PROVIDERS)
+  allPatients: [Patient] @join__field(graph: PATIENTS)
   allReferrals: [Referral] @join__field(graph: REFERRALS)
 }
 
-type Referral implements Node {
-  id: ID!
-  name: String!
+type Referral implements Node
+  @join__owner(graph: REFERRALS)
+  @join__type(graph: REFERRALS, key: "id")
+{
+  id: ID! @join__field(graph: REFERRALS)
+  name: String! @join__field(graph: REFERRALS)
+  patient: Patient @join__field(graph: REFERRALS, provides: "id")
+  provider: Provider @join__field(graph: REFERRALS, provides: "id")
 }
+
