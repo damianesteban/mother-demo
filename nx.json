@@ -33,6 +33,12 @@
     },
     "federated-gateway": {
       "tags": []
+    },
+    "common-types": {
+      "tags": []
+    },
+    "lowdb-client": {
+      "tags": []
     }
   }
 }

@@ -1,13 +1,7 @@
 // apps/api/src/app/set.resolver.ts
 
 import { Args, Mutation, Query, Resolver, ResolveReference } from '@nestjs/graphql';
-
-export interface PatientEntity {
-  id: string | number;
-  firstName: string;
-  lastName: string;
-  email: string;
-}
+import { PatientEntity } from '@mother-demo/common-types'
 
 @Resolver('Patient')
 export class PatientResolver {

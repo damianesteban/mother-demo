@@ -2,7 +2,6 @@ import { ApolloServer } from 'apollo-server';
 import { ApolloGateway } from '@apollo/gateway';
 import * as fs from 'fs';
 
-
 const supergraphSchema = fs.readFileSync(__dirname + '/assets/schema.graphql').toString();
 console.log('GRAPH: ', supergraphSchema)
 

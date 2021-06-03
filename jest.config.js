@@ -5,5 +5,7 @@ module.exports = {
     '<rootDir>/libs/schema',
     '<rootDir>/apps/providers',
     '<rootDir>/apps/federated-gateway',
+    '<rootDir>/libs/common-types',
+    '<rootDir>/libs/lowdb-client',
   ],
 };

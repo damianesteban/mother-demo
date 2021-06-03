@@ -7,17 +7,19 @@
 - [x] Add same codegen setup to referrals service
 - [x] Add Providers service, same setup, codegen, etc.
 - [x] Add Federated Gateway Part 1 - https://www.apollographql.com/docs/federation/quickstart/
-- [ ] Add Federation to all nestjs apps
-- [ ] Get all services started - started on this, command:
+- [x] Add Federation to all nestjs apps
+- [x] Get all services started - started on this, command:
 
 ```
-yarn nx run-many --target=serve --projects=referrals,providers,patients,federated-gateway --parallel --maxParallel=100 --with-deps
+yarn nx run-many --target=serve --projects=referrals,providers,patients,federated-gateway --parallel --maxParallel=100 // --with-deps
 ```
 
-- TODO fix issue with filenames, create a library for schema files, import them all there (somehow)
+- TODO create a library for schema files, import them all there (somehow)
 
 
-- [ ] Add Federated Gateway Partt 2 - 
+## Client Setup
+
+Nextjs
 - [ ] Add basic client with codegen
 - [ ] Perform one simple query with a Next.js Client
 - [ ] Deploy to Kubernetes (use Ambassador initializer)

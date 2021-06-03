@@ -225,6 +225,48 @@
           }
         }
       }
+    },
+    "common-types": {
+      "root": "libs/common-types",
+      "sourceRoot": "libs/common-types/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/common-types/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common-types"],
+          "options": {
+            "jestConfig": "libs/common-types/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "lowdb-client": {
+      "root": "libs/lowdb-client",
+      "sourceRoot": "libs/lowdb-client/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/lowdb-client/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/lowdb-client"],
+          "options": {
+            "jestConfig": "libs/lowdb-client/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

@@ -19,14 +19,14 @@ directive @join__graph(name: String!, url: String!) on ENUM_VALUE
 scalar join__FieldSet
 
 enum join__Graph {
-  PROVIDERS @join__graph(name: "providers" url: "http://localhost:3332/graphql")
   PATIENTS @join__graph(name: "patients" url: "http://localhost:3331/graphql")
+  PROVIDERS @join__graph(name: "providers" url: "http://localhost:3332/graphql")
   REFERRALS @join__graph(name: "referrals" url: "http://localhost:3333/graphql")
 }
 
 type Mutation {
-  addProvider(firstName: String!, lastName: String!, email: String!): Provider @join__field(graph: PROVIDERS)
   addPatient(firstName: String!, lastName: String!, email: String!): Patient @join__field(graph: PATIENTS)
+  addProvider(firstName: String!, lastName: String!, email: String!): Provider @join__field(graph: PROVIDERS)
   addReferral(name: String!): Referral @join__field(graph: REFERRALS)
 }
 
@@ -59,8 +59,8 @@ type Provider implements Node
 }
 
 type Query {
-  allProviders: [Provider] @join__field(graph: PROVIDERS)
   allPatients: [Patient] @join__field(graph: PATIENTS)
+  allProviders: [Provider] @join__field(graph: PROVIDERS)
   allReferrals: [Referral] @join__field(graph: REFERRALS)
 }
 

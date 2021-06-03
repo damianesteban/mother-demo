@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@mother-demo/schema": ["libs/schema/src/index.ts"]
+      "@mother-demo/schema": ["libs/schema/src/index.ts"],
+      "@mother-demo/common-types": ["libs/common-types/src/index.ts"],
+      "@mother-demo/lowdb-client": ["libs/lowdb-client/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
