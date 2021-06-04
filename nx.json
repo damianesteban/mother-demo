@@ -46,6 +46,9 @@
     "frontender-e2e": {
       "tags": [],
       "implicitDependencies": ["frontender"]
+    },
+    "auth": {
+      "tags": []
     }
   }
 }

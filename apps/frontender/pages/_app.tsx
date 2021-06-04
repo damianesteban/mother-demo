@@ -16,10 +16,6 @@ function CustomApp({ Component, pageProps }: AppProps) {
         <title>Welcome to frontender!</title>
       </Head>
       <div className="app">
-        <header className="flex">
-          <NxLogo width="75" height="50" />
-          <h1>Welcome to frontender!</h1>
-        </header>
         <main>
           <Component {...pageProps} />
         </main>

@@ -8,5 +8,6 @@ module.exports = {
     '<rootDir>/libs/common-types',
     '<rootDir>/libs/lowdb-client',
     '<rootDir>/apps/frontender',
+    '<rootDir>/libs/auth',
   ],
 };

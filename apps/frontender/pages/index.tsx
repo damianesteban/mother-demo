@@ -1,49 +1,57 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import { gql, useQuery } from 'urql';
+import { useUser } from '@mother-demo/auth'
+import Layout from '../components/Layout'
 
-const PatientsQuery = gql`
-  query AllPatientsQuery {
-    allPatients {
-      id
-      email
-    }
-  }
-`;
-
-const StyledPage = styled.div`
-  .page {
-  }
-`;
-
-export function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.@emotion/styled file.
-   */
-
-  const [result, reexecuteQuery] = useQuery({
-    query: PatientsQuery,
-  });
-
-  const { data, fetching, error } = result;
-
-  if (fetching) return <p>Loading...</p>;
-  if (error) return <p>Oh no... {error.message}</p>;
+const Home = () => {
+  const user = useUser()
 
   return (
-    <StyledPage>
-      <h2>Home</h2>
-      <p>The thing is here!!!!!!!!!!!!!!!!!!.</p>
-      <p>Here are patient emails:</p>
-      <ul>
-        {data.allPatients.map((patient) => (
-          <li key={patient.id}>{patient.email}</li>
-        ))}
-      </ul>
-    </StyledPage>
-  );
+    <Layout>
+      <h1>Magic Example</h1>
+
+      <p>Steps to test this authentication example:</p>
+
+      <ol>
+        <li>Click Login and enter an email.</li>
+        <li>
+          You'll be redirected to Home. Click on Profile, notice how your
+          session is being used through a token stored in a cookie.
+        </li>
+        <li>
+          Click Logout and try to go to Profile again. You'll get redirected to
+          Login.
+        </li>
+      </ol>
+
+      <p>
+        To learn more about Magic, visit their{' '}
+        <a
+          href="https://docs.magic.link/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          documentation
+        </a>
+        .
+      </p>
+
+      {user && (
+        <>
+          <p>Currently logged in as:</p>
+          <pre>{JSON.stringify(user, null, 2)}</pre>
+        </>
+      )}
+
+      <style jsx>{`
+        li {
+          margin-bottom: 0.5rem;
+        }
+        pre {
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        }
+      `}</style>
+    </Layout>
+  )
 }
 
-export default Index;
+export default Home
