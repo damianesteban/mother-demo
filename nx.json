@@ -39,6 +39,13 @@
     },
     "lowdb-client": {
       "tags": []
+    },
+    "frontender": {
+      "tags": []
+    },
+    "frontender-e2e": {
+      "tags": [],
+      "implicitDependencies": ["frontender"]
     }
   }
 }

@@ -14,9 +14,9 @@ export class PatientResolver {
     },
     {
         id: 2,
-        firstName: 'Bob',
-        lastName: 'Yab',
-        email: 'gggg@www.com'
+        firstName: 'Nob',
+        lastName: 'Qab',
+        email: 'jjj@ooo.com'
     },
   ];
 

@@ -11,7 +11,7 @@ interface Node {
   id: ID!
 }
 
-type Patient implements Node {
+type Patient implements Node @key(fields: "id") {
   email: String!
   firstName: String!
   id: ID!

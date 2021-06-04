@@ -7,5 +7,6 @@ module.exports = {
     '<rootDir>/apps/federated-gateway',
     '<rootDir>/libs/common-types',
     '<rootDir>/libs/lowdb-client',
+    '<rootDir>/apps/frontender',
   ],
 };

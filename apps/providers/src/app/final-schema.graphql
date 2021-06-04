@@ -1,0 +1,23 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Mutation {
+  addProvider(firstName: String!, lastName: String!, email: String!): Provider
+}
+
+interface Node {
+  id: ID!
+}
+
+type Provider implements Node @key(fields: "id") {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+}
+
+type Query {
+  allProviders: [Provider]
+}

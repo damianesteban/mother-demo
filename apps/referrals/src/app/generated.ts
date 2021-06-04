@@ -27,6 +27,18 @@ export type Node = {
   id: Scalars['ID'];
 };
 
+export type Patient = {
+  __typename?: 'Patient';
+  id: Scalars['ID'];
+  referrals?: Maybe<Array<Maybe<Referral>>>;
+};
+
+export type Provider = {
+  __typename?: 'Provider';
+  id: Scalars['ID'];
+  referrals?: Maybe<Array<Maybe<Referral>>>;
+};
+
 export type Query = {
   __typename?: 'Query';
   allReferrals?: Maybe<Array<Maybe<Referral>>>;
@@ -36,6 +48,8 @@ export type Referral = Node & {
   __typename?: 'Referral';
   id: Scalars['ID'];
   name: Scalars['String'];
+  patient?: Maybe<Patient>;
+  provider?: Maybe<Provider>;
 };
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
@@ -121,6 +135,8 @@ export type ResolversTypes = ResolversObject<{
   String: ResolverTypeWrapper<Scalars['String']>;
   Node: ResolversTypes['Referral'];
   ID: ResolverTypeWrapper<Scalars['ID']>;
+  Patient: ResolverTypeWrapper<Patient>;
+  Provider: ResolverTypeWrapper<Provider>;
   Query: ResolverTypeWrapper<{}>;
   Referral: ResolverTypeWrapper<Referral>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
@@ -132,6 +148,8 @@ export type ResolversParentTypes = ResolversObject<{
   String: Scalars['String'];
   Node: ResolversParentTypes['Referral'];
   ID: Scalars['ID'];
+  Patient: Patient;
+  Provider: Provider;
   Query: {};
   Referral: Referral;
   Boolean: Scalars['Boolean'];
@@ -146,6 +164,18 @@ export type NodeResolvers<ContextType = any, ParentType extends ResolversParentT
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
 }>;
 
+export type PatientResolvers<ContextType = any, ParentType extends ResolversParentTypes['Patient'] = ResolversParentTypes['Patient']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  referrals?: Resolver<Maybe<Array<Maybe<ResolversTypes['Referral']>>>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type ProviderResolvers<ContextType = any, ParentType extends ResolversParentTypes['Provider'] = ResolversParentTypes['Provider']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  referrals?: Resolver<Maybe<Array<Maybe<ResolversTypes['Referral']>>>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
   allReferrals?: Resolver<Maybe<Array<Maybe<ResolversTypes['Referral']>>>, ParentType, ContextType>;
 }>;
@@ -153,12 +183,16 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 export type ReferralResolvers<ContextType = any, ParentType extends ResolversParentTypes['Referral'] = ResolversParentTypes['Referral']> = ResolversObject<{
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  patient?: Resolver<Maybe<ResolversTypes['Patient']>, ParentType, ContextType>;
+  provider?: Resolver<Maybe<ResolversTypes['Provider']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
 export type Resolvers<ContextType = any> = ResolversObject<{
   Mutation?: MutationResolvers<ContextType>;
   Node?: NodeResolvers<ContextType>;
+  Patient?: PatientResolvers<ContextType>;
+  Provider?: ProviderResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Referral?: ReferralResolvers<ContextType>;
 }>;
