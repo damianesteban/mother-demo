@@ -4,6 +4,8 @@ import Layout from '../components/Layout'
 const Home = () => {
   const user = useUser()
 
+  console.log(user ? `Current User: ${JSON.stringify(user)}` : 'Current User: NONE');
+
   return (
     <Layout>
       <h1>Magic Example</h1>

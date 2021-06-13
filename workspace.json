@@ -30,7 +30,8 @@
             "outputPath": "dist/apps/patients",
             "main": "apps/patients/src/main.ts",
             "tsConfig": "apps/patients/tsconfig.app.json",
-            "assets": ["apps/patients/src/assets"]
+            "assets": ["apps/patients/src/assets"],
+            "generatePackageJson": true
           },
           "configurations": {
             "production": {
@@ -80,7 +81,8 @@
             "outputPath": "dist/apps/referrals",
             "main": "apps/referrals/src/main.ts",
             "tsConfig": "apps/referrals/tsconfig.app.json",
-            "assets": ["apps/referrals/src/assets"]
+            "assets": ["apps/referrals/src/assets"],
+            "generatePackageJson": true
           },
           "configurations": {
             "production": {
@@ -151,7 +153,8 @@
             "outputPath": "dist/apps/providers",
             "main": "apps/providers/src/main.ts",
             "tsConfig": "apps/providers/tsconfig.app.json",
-            "assets": ["apps/providers/src/assets"]
+            "assets": ["apps/providers/src/assets"],
+            "generatePackageJson": true
           },
           "configurations": {
             "production": {
@@ -201,7 +204,8 @@
             "outputPath": "dist/apps/federated-gateway",
             "main": "apps/federated-gateway/src/main.ts",
             "tsConfig": "apps/federated-gateway/tsconfig.app.json",
-            "assets": ["apps/federated-gateway/src/assets"]
+            "assets": ["apps/federated-gateway/src/assets"],
+            "generatePackageJson": true
           },
           "configurations": {
             "production": {
