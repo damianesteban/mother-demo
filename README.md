@@ -14,16 +14,28 @@
 yarn nx run-many --target=serve --projects=referrals,providers,patients,federated-gateway --parallel --maxParallel=100 // --with-deps
 ```
 
-- TODO create a library for schema files, import them all there (somehow)
+**TODO:**
+
+06.13.2021
+
+- All apps have a Dockerfile
+- [ ] Continue with setup here: https://blog.nrwl.io/nx-and-node-microservices-b6df3cd1bad6
+- [ ] Create deployment, service, ingress k8s yaml for each app
+- [ ] Test deploy the Next.js App to k8s cluster w/ Let's Encrypt
+- [ ] Deploy gateway and other microservices
+
+---
+
+- [ ] create a library for schema files, import them all there (somehow)
 
 
 ## Client Setup
 
 Nextjs
 - [ ] Add basic client with codegen
-- [ ] Perform one simple query with a Next.js Client
+- [x] Perform one simple query with a Next.js Client
 - [ ] Deploy to Kubernetes (use Ambassador initializer)
-- [ ] Connect Poistgres DB and deploy to Kubernetes
+- [ ] Connect Postgres DB and deploy to Kubernetes
 
 
 ---
