@@ -18,9 +18,9 @@ yarn nx run-many --target=serve --projects=referrals,providers,patients,federate
 
 06.13.2021
 
-- [ ] Add Dockerfile to all apps
-- [ ] Continue with setup here: https://blog.nrwl.io/nx-and-node-microservices-b6df3cd1bad6
-- [ ] Create deployment, service, ingress k8s yaml for each app
+- [x] Add Dockerfile to all apps
+- [x] Continue with setup here: https://blog.nrwl.io/nx-and-node-microservices-b6df3cd1bad6
+- [ ] Create deployment, service, ingress yaml - Kubernetes for each app
 - [ ] Test deploy the Next.js App to k8s cluster w/ Let's Encrypt
 - [ ] Deploy gateway and other microservices
 - [ ] create a library for schema files, import them all there (somehow)
