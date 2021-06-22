@@ -23,6 +23,16 @@
       "sourceRoot": "apps/patients/src",
       "projectType": "application",
       "targets": {
+        "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "nx build patients",
+              "docker build -f ./apps/patients/Dockerfile . -t damianesteban/patients-graphql:latest"
+            ],
+            "parallel": false
+          }
+        },
         "build": {
           "executor": "@nrwl/node:build",
           "outputs": ["{options.outputPath}"],
@@ -74,6 +84,16 @@
       "sourceRoot": "apps/referrals/src",
       "projectType": "application",
       "targets": {
+        "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "nx build referrals",
+              "docker build -f ./apps/referrals/Dockerfile . -t damianesteban/referrals-graphql:latest"
+            ],
+            "parallel": false
+          }
+        },
         "build": {
           "executor": "@nrwl/node:build",
           "outputs": ["{options.outputPath}"],
@@ -146,6 +166,16 @@
       "sourceRoot": "apps/providers/src",
       "projectType": "application",
       "targets": {
+        "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "nx build providers",
+              "docker build -f ./apps/providers/Dockerfile . -t damianesteban/providers-graphql:latest"
+            ],
+            "parallel": false
+          }
+        },
         "build": {
           "executor": "@nrwl/node:build",
           "outputs": ["{options.outputPath}"],
@@ -197,6 +227,16 @@
       "sourceRoot": "apps/federated-gateway/src",
       "projectType": "application",
       "targets": {
+        "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "nx build federated-gateway",
+              "docker build -f ./apps/federated-gateway/Dockerfile . -t damianesteban/federated-gateway-graphql:latest"
+            ],
+            "parallel": false
+          }
+        },
         "build": {
           "executor": "@nrwl/node:build",
           "outputs": ["{options.outputPath}"],
@@ -290,6 +330,16 @@
       "sourceRoot": "apps/frontender",
       "projectType": "application",
       "targets": {
+        "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "nx build frontender",
+              "docker build -f ./apps/frontender/Dockerfile . -t damianesteban/frontender:latest"
+            ],
+            "parallel": false
+          }
+        },
         "build": {
           "executor": "@nrwl/next:build",
           "outputs": ["{options.outputPath}"],
