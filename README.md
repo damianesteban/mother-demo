@@ -6,20 +6,19 @@ This is meant to be a test bed for microservices deployed and managed with Kuber
 
 ## To Do
 
-- [x] Add same codegen setup to referrals service
+- [x] Setup codegen
 - [x] Add Providers service, same setup, codegen, etc.
 - [x] Add Federated Gateway Part 1 - https://www.apollographql.com/docs/federation/quickstart/
 - [x] Add Federation to all nestjs apps
-- [x] Get all services started - started on this, command:
+- [x] Get all services started, command:
 
 ```
-yarn nx run-many --target=serve --projects=referrals,providers,patients,federated-gateway --parallel --maxParallel=100 // --with-deps
+yarn nx run-many --target=serve --projects=referrals,providers,patients,federated-gateway,frontender --parallel --maxParallel=100 // --with-deps
 ```
-
-06.13.2021
 
 - [x] Add Dockerfile to all apps
 - [x] Continue with setup here: https://blog.nrwl.io/nx-and-node-microservices-b6df3cd1bad6
+- [x] Add custom `deploy` command that builds all docker images and pushes to dockerhub (credentials needed)
 - [ ] Create deployment, service, ingress yaml - Kubernetes for each app
 - [ ] Test deploy the Next.js App to k8s cluster w/ Let's Encrypt
 - [ ] Deploy gateway and other microservices

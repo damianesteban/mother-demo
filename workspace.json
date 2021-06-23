@@ -28,7 +28,8 @@
           "options": {
             "commands": [
               "nx build patients",
-              "docker build -f ./apps/patients/Dockerfile . -t damianesteban/patients-graphql:latest"
+              "docker build -f ./apps/patients/Dockerfile . -t damianesteban/patients-graphql:latest",
+              "docker push damianesteban/patients-graphql:latest"
             ],
             "parallel": false
           }
@@ -89,7 +90,8 @@
           "options": {
             "commands": [
               "nx build referrals",
-              "docker build -f ./apps/referrals/Dockerfile . -t damianesteban/referrals-graphql:latest"
+              "docker build -f ./apps/referrals/Dockerfile . -t damianesteban/referrals-graphql:latest",
+              "docker push damianesteban/referrals-graphql:latest"
             ],
             "parallel": false
           }
@@ -171,7 +173,8 @@
           "options": {
             "commands": [
               "nx build providers",
-              "docker build -f ./apps/providers/Dockerfile . -t damianesteban/providers-graphql:latest"
+              "docker build -f ./apps/providers/Dockerfile . -t damianesteban/providers-graphql:latest",
+              "docker push damianesteban/providers-graphql:latest"
             ],
             "parallel": false
           }
@@ -232,7 +235,8 @@
           "options": {
             "commands": [
               "nx build federated-gateway",
-              "docker build -f ./apps/federated-gateway/Dockerfile . -t damianesteban/federated-gateway-graphql:latest"
+              "docker build -f ./apps/federated-gateway/Dockerfile . -t damianesteban/federated-gateway-graphql:latest",
+              "docker push damianesteban/federated-gateway-graphql:latest"
             ],
             "parallel": false
           }
@@ -335,7 +339,8 @@
           "options": {
             "commands": [
               "nx build frontender",
-              "docker build -f ./apps/frontender/Dockerfile . -t damianesteban/frontender:latest"
+              "docker build -f ./apps/frontender/Dockerfile . -t damianesteban/frontender:latest",
+              "docker push damianesteban/frontender:latest"
             ],
             "parallel": false
           }
