@@ -1,0 +1,37 @@
+name: 'Manual Approval'
+
+on:
+  push:
+    branches:
+      - "main"
+
+
+jobs:
+  build-and-publish:
+   runs-on: ubuntu-latest
+   steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: npm install -g bats
+      - run: bats -v
+
+
+  deploy-dev:
+    runs-on: 'ubuntu-latest'
+    environment: 'non-production'
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: npm install -g bats
+      - run: bats -v
+
+  deploy-prod:
+    runs-on: 'ubuntu-latest'
+    environment: 'production'
+    needs: [build-and-publish, deploy-dev]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: npm install -g bats
+      - run: bats -v
+
